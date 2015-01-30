@@ -2,7 +2,7 @@
 
 <h3>List of venues:</h3>
 <% if !@all_venues.any?() %>
-  <p>(No zoos or officers' clubs added yet.)</p>
+  <p>(No zoos or officers' clubs added yet)</p>
 <% else %>
   <ul>
     <% @all_venues.each() do |venue| %>
@@ -14,5 +14,23 @@
 <form action="/add_venue" method="post">
   <label for="new_venue_name">Add a new venue:</label>
   <input id="new_venue_name" name="new_venue_name" type="text" placeholder="Zoo Theater">
+  <button type="submit" class="btn btn-primary">Add</button>
+</form>
+
+<h3>List of bands:</h3>
+<% if !@all_bands.any?() %>
+<p>(No bands added yet)</p>
+<% else %>
+<ul>
+  <% @all_bands.each() do |band| %>
+  <li><%= band.name() %></li>
+  <% end %>
+</ul>
+<% end %>
+
+
+<form action="/add_band" method="post">
+  <label for="new_band_name">Add a new band:</label>
+  <input id="new_band_name" name="new_band_name" type="text" placeholder="Spinal Tap">
   <button type="submit" class="btn btn-primary">Add</button>
 </form>
