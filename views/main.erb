@@ -1,0 +1,18 @@
+<h1>Jeanine St. Hubbins Tour Management, LLC</h1>
+
+<h3>List of venues:</h3>
+<% if !@all_venues.any?() %>
+  <p>(No zoos or officers' clubs added yet.)</p>
+<% else %>
+  <ul>
+    <% @all_venues.each() do |venue| %>
+      <li><%= venue.name() %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<form action="/add_venue" method="post">
+  <label for="new_venue_name">Add a new venue:</label>
+  <input id="new_venue_name" name="new_venue_name" type="text" placeholder="Zoo Theater">
+  <button type="submit" class="btn btn-primary">Add</button>
+</form>
