@@ -1,0 +1,14 @@
+<h1>What venues shall <%= @new_band_name %> rock to the ground?</h1>
+
+<form action="/book_tour" method="post">
+  <input type="hidden" name="new_band_name" value="<%= @new_band_name %>">
+  <% Venue.all().each() do |venue| %>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" name="venue_ids_array[]" value="<%= venue.id() %>">
+      <%= venue.name() %>
+    </label>
+  </div>
+  <% end %>
+  <button type="submit" class="btn btn-danger">Book the tour!</button>
+</form>

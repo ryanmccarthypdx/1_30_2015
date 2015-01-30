@@ -17,17 +17,21 @@
   <button type="submit" class="btn btn-primary">Add</button>
 </form>
 
-<h3>List of bands:</h3>
+<h3>List of bands and their dates:</h3>
 <% if !@all_bands.any?() %>
-<p>(No bands added yet)</p>
+  <p>(No bands added yet)</p>
 <% else %>
-<ul>
-  <% @all_bands.each() do |band| %>
-  <li><%= band.name() %></li>
-  <% end %>
-</ul>
+  <ul>
+    <% @all_bands.each() do |band| %>
+      <li><%= band.name() %></li>
+      <% band.venues().each() do |booked_venue| %>
+        <ul>
+          <li><%= booked_venue.name() %></li>
+        </ul>
+      <% end %>
+    <% end %>
+  </ul>
 <% end %>
-
 
 <form action="/add_band" method="post">
   <label for="new_band_name">Add a new band:</label>
